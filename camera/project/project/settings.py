@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'app',
 ]
 
@@ -120,3 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# カメラ系URLを取得する
+CAMERA_URL_STREAM = os.getenv('CAMERA_URL_STREAM', 'http://hoge:hoge@pi02.web.ryoma0923.work:8080/?action=stream')
+print(CAMERA_URL_STREAM)
+
+CAMERA_IMAGE_DIRECTORY = os.getenv('CAMERA_IMAGE_DIRECTORY', os.path.dirname(__file__))
+print(CAMERA_IMAGE_DIRECTORY)
