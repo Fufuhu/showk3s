@@ -29,7 +29,7 @@ def add_qrcode(frame, message):
         qr_code.save(file_name)
 
     # QRコードのオーバーレイ
-    ## 画像の読込
+    ## QRコード画像の読込
     img = cv2.imread(file_name)
     img = cv2.resize(img, (200, 200))
 

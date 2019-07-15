@@ -126,5 +126,5 @@ STATIC_URL = '/static/'
 CAMERA_URL_STREAM = os.getenv('CAMERA_URL_STREAM', 'http://hoge:hoge@pi02.web.ryoma0923.work:8080/?action=stream')
 print(CAMERA_URL_STREAM)
 
-CAMERA_IMAGE_DIRECTORY = os.getenv('CAMERA_IMAGE_DIRECTORY', os.path.dirname(__file__))
+CAMERA_IMAGE_DIRECTORY = os.getenv('CAMERA_IMAGE_DIRECTORY', os.path.dirname(__file__)+"/images/")
 print(CAMERA_IMAGE_DIRECTORY)

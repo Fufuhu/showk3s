@@ -48,8 +48,6 @@ def overlay_logo(frame):
     dst = cv2.add(bg, fg)
     frame[start_y:frame_height, 0:img_width] = dst
 
-    frame = add_qrcode(frame, "スナップショットを撮影すると確定します。まだ、意味のないQRコードです。")
-    
     return frame
 
 

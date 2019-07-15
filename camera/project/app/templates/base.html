@@ -1,0 +1,28 @@
+<html>
+{% load static%}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='slim' %}
+<head>
+    <title>showk3s demonstration</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top bg-dark text-light" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- ヘッダーの文字 -->
+            <div class="navbar-brand">showk3s Demonstration</div>
+        </div>
+    </div> 
+</nav>
+<div class="container" style="padding-top:100px;">
+    {% block content %}
+    {% endblock %}
+</div>
+<footer class="fixed-bottom bg-dark text-light">
+    <div class="container">
+        (C) Ryoma Fujiwara, Mizumoto Kyosuke, Rancher JP, 2019
+    </div>
+</footer>
+</body>
+</html>
