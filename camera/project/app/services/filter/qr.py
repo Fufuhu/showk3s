@@ -15,7 +15,9 @@ def add_qrcode(frame, message):
     """
 
     # QRコードの生成
-    file_name = message + ".png"
+    file_name = message.split('/')[-1]
+    file_name = file_name.replace('.jpg','.png')
+    # file_name = message + ".png"
 
     if not os.path.isfile(file_name):
         qr = qrcode.QRCode(
