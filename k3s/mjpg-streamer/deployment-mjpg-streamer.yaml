@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - image: fufuhu/mjpg-streamer:20190711
+        imagePullPolicy: IfNotPresent
         name: mjpg-streamer
         securityContext:
           privileged: true

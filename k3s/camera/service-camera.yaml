@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: camera
+  name: service-camera
+spec:
+  ports:
+  - name: camera-port
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: camera
+  type: ClusterIP

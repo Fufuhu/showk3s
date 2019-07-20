@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-camera
+  labels:
+    app: camera
+spec:
+  rules:
+  - host: camera.web.ryoma0923.work
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: service-camera
+          servicePort: 8000
