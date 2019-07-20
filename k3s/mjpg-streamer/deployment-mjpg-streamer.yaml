@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mjpg-streamer
+  name: deployment-mjpg-streamer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mjpg-streamer
+  template:
+    metadata:
+      labels:
+        app: mjpg-streamer
+    spec:
+      containers:
+      - image: fufuhu/mjpg-streamer:20190711
+        name: mjpg-streamer
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /mnt
+          name: volume-device
+      volumes:
+      - name: volume-device
+        hostPath:
+          path: /dev
