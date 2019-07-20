@@ -4,7 +4,7 @@ FROM debian:buster-slim
 RUN apt update && apt install --no-install-recommends -y python3-opencv python3-pip
 RUN python3 --version
 RUN python3 -c 'import cv2; print(cv2.__version__)'
-RUN apt install -y python3-setuptools
+RUN apt install -y python3-setuptools python3-pil
 
 # 実行ユーザの準備
 RUN useradd django && mkdir -p /home/django && chown -R django:django /home/django
@@ -19,3 +19,5 @@ RUN pip3 install --user -r requirements.txt
 COPY --chown=django:django project ./
 ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["python3 manage.py runserver 0.0.0.0:8000"]
+
+# docker run -d --name camera -p 8000:8000 -e AWS_ACCESS_KEY_ID=hogehoge -e AWS_SECRET_ACCESS_KEY=piyopiyo 
