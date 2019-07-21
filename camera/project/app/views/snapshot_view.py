@@ -19,11 +19,7 @@ BUCKET_NAME='showk3s'
 class SnapView(View):
 
     def get(self, request):
-        # image = cam.get_frame()
-        # image = overlay_logo(image)
-        # image = cam.get_filtered_frame(overlay_logo)
         filename = str(uuid4()) + '.jpg'
-        print(filename)
         save_directory = CAMERA_IMAGE_DIRECTORY
         full_path = save_directory + filename
 
@@ -32,7 +28,8 @@ class SnapView(View):
 
         image = cam.get_filtered_frame_with_qr(
             message=file_path_s3,
-            filter_function=overlay_logo
+            #filter_function=overlay_logo
+            filter_function=cam.overlay_logo_without_mask
         )
 
 

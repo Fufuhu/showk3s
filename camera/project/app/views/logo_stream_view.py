@@ -7,6 +7,7 @@ import os
 from app.services.video_camera import VideoCamera
 from app.services.filter.qr import add_qrcode
 
+
 cam =  VideoCamera()
 PATH = os.path.dirname(__file__)
 
@@ -55,8 +56,11 @@ class LogoStreamView(View):
     def get_stream(self):
         # https://stackoverflow.com/questions/49680152/opencv-live-stream-from-camera-in-django-webpage
 
+        cam.randomize_logo()
+
         while True:
-            frame = cam.get_filtered_frame(overlay_logo)
+            # frame = cam.get_filtered_frame(overlay_logo)
+            frame = cam.get_filtered_frame(cam.overlay_logo_without_mask)
             yield(b'--frame\r\n'
               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
