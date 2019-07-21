@@ -15,10 +15,13 @@ spec:
         app: camera
     spec:
       containers:
-      - image: fufuhu/camera:20190721
+      - image: fufuhu/camera:20190722
         name: camera
         ports:
         - containerPort: 8000
+        env:
+        - name: CAMERA_URL_STREAM
+          value: http://hoge:hoge@service-mjpg-streamer:8080/?action=stream
         envFrom:
         - secretRef:
             name: secret-camera
