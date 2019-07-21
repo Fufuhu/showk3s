@@ -15,7 +15,7 @@ spec:
         app: camera
     spec:
       containers:
-      - image: fufuhu/camera:20190722
+      - image: fufuhu/camera:20190722-2
         name: camera
         ports:
         - containerPort: 8000
