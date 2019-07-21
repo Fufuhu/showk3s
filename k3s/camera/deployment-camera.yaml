@@ -15,14 +15,40 @@ spec:
         app: camera
     spec:
       containers:
-      - image: fufuhu/camera:20190720
+      - image: fufuhu/camera:20190721
         name: camera
         ports:
         - containerPort: 8000
         envFrom:
         - secretRef:
             name: secret-camera
-        #command:
-        #  - /bin/sh
-        #  - -c
-        #  - tail -f /dev/null
+        volumeMounts:
+        - mountPath: /home/django/app/services/images
+          name: volume-image
+      - image: fufuhu/s3-syncer:20190721
+        name: syncer
+        command:
+          - ./s3_sync_with_loop.sh
+        envFrom:
+        - secretRef:
+            name: secret-minio
+        volumeMounts:
+        - mountPath: /images
+          name: volume-image
+      initContainers:
+      - image: fufuhu/s3-syncer:20190721
+        name: init-syncer
+        command:
+          - ./s3_sync.sh
+        envFrom:
+        - secretRef:
+            name: secret-minio
+        volumeMounts:
+        - mountPath: /images
+          name: volume-image
+      volumes:
+      - name: volume-image
+        emptyDir: {}
+
+# /home/django/app/services/images/
+# /images
